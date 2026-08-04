@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfólio de estudante de Engenharia de Software em busca de estágio."
+    />
+    <title>Seu Nome — Portfólio</title>
+    <style>
+      :root {
+        --paper: #f6f6f2;
+        --ink: #15221e;
+        --muted: #5b6862;
+        --line: #d4dad5;
+        --green: #12634e;
+        --lime: #d8ee79;
+        --orange: #fb7d45;
+        --card: #ffffff;
+        --shadow: 0 18px 55px rgba(23, 40, 32, 0.09);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 82px;
+        border-bottom: 1px solid var(--line);
+      }
+      .brand { font-weight: 800; letter-spacing: -0.05em; font-size: 1.15rem; }
+      .brand span { color: var(--green); }
+      .nav-links { display: flex; gap: 28px; align-items: center; color: var(--muted); font-size: .92rem; }
+      .nav-links a:hover { color: var(--green); }
+      .menu-button { display: none; border: 0; background: none; font: inherit; color: var(--green); font-weight: 700; cursor: pointer; }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap: 76px;
+        align-items: center;
+        padding: 86px 0 104px;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: #e7f2e9;
+        color: var(--green);
+        border-radius: 100px;
+        padding: 7px 12px;
+        font-size: .79rem;
+        font-weight: 750;
+      }
+      .status-dot { width: 7px; height: 7px; background: #25a46f; border-radius: 50%; box-shadow: 0 0 0 4px rgba(37,164,111,.15); }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { font-size: clamp(3.25rem, 7vw, 5.8rem); line-height: .94; letter-spacing: -.075em; margin: 20px 0 24px; max-width: 740px; }
+      h1 em { font-style: normal; color: var(--green); }
+      .hero-copy { max-width: 590px; color: var(--muted); font-size: 1.1rem; line-height: 1.7; }
+      .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+      .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 13px 18px; border-radius: 8px; font-size: .92rem; font-weight: 750; transition: transform .2s, background .2s; }
+      .button:hover { transform: translateY(-2px); }
+      .button-primary { color: #fff; background: var(--green); }
+      .button-primary:hover { background: #0d503e; }
+      .button-secondary { border: 1px solid var(--line); background: var(--card); }
+
+      .portrait-wrap { position: relative; max-width: 360px; justify-self: end; width: 100%; }
+      .portrait {
+        aspect-ratio: .9;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: var(--green);
+        border-radius: 20px 20px 110px 20px;
+        box-shadow: var(--shadow);
+      }
+      .portrait svg { width: 90%; height: 90%; }
+      .note {
+        position: absolute;
+        left: -38px;
+        bottom: 26px;
+        max-width: 220px;
+        padding: 16px;
+        background: var(--lime);
+        box-shadow: 9px 9px 0 var(--ink);
+        transform: rotate(-4deg);
+        font-size: .86rem;
+        font-weight: 750;
+        line-height: 1.35;
+      }
+      .note small { display: block; margin-top: 5px; color: #3c493e; font-weight: 600; }
+
+      .strip { background: var(--ink); color: #fff; overflow: hidden; white-space: nowrap; }
+      .strip-inner { display: inline-flex; gap: 38px; padding: 15px 0; min-width: 100%; font-size: .82rem; text-transform: uppercase; letter-spacing: .13em; font-weight: 750; }
+      .strip b { color: var(--lime); font-size: 1.05rem; }
+
+      section { padding: 102px 0; }
+      .section-label { color: var(--green); font-size: .76rem; text-transform: uppercase; letter-spacing: .15em; font-weight: 800; margin-bottom: 13px; }
+      .section-title { max-width: 720px; font-size: clamp(2rem, 4vw, 3.45rem); line-height: 1.02; letter-spacing: -.055em; margin-bottom: 45px; }
+
+      .about { display: grid; grid-template-columns: .8fr 1.2fr; gap: 88px; }
+      .about-intro { font-size: 1.22rem; line-height: 1.58; }
+      .about-intro strong { color: var(--green); }
+      .about-detail { color: var(--muted); font-size: 1.04rem; line-height: 1.75; }
+      .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 34px; background: var(--line); border: 1px solid var(--line); }
+      .fact { background: var(--card); padding: 17px; }
+      .fact strong { display: block; font-size: 1.3rem; letter-spacing: -.04em; }
+      .fact span { color: var(--muted); font-size: .79rem; }
+
+      .skills-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }
+      .skills-card { border: 1px solid var(--line); background: var(--card); padding: 28px; }
+      .skills-card h3 { font-size: 1.15rem; letter-spacing: -.03em; margin-bottom: 20px; }
+      .tags { display: flex; flex-wrap: wrap; gap: 9px; }
+      .tag { background: #edf1ee; border-radius: 4px; padding: 7px 10px; color: #395048; font-size: .82rem; font-weight: 650; }
+      .focus-card { background: var(--green); color: #fff; border-color: var(--green); }
+      .focus-card p { color: #d7e8e0; margin-bottom: 23px; }
+      .focus-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 13px; }
+      .focus-list li { display: flex; gap: 11px; align-items: center; font-size: .9rem; }
+      .check { display: grid; place-items: center; flex: 0 0 21px; width: 21px; height: 21px; border-radius: 50%; background: var(--lime); color: var(--ink); font-size: .75rem; font-weight: 900; }
+
+      .projects { background: #e8ece8; }
+      .project-list { display: grid; gap: 1px; background: #cbd3cc; border: 1px solid #cbd3cc; }
+      .project { display: grid; grid-template-columns: 80px 1fr auto; gap: 26px; align-items: center; background: var(--paper); padding: 27px 29px; transition: background .2s, transform .2s; }
+      .project:hover { background: #fff; transform: translateX(5px); }
+      .project-number { color: var(--green); font-weight: 800; font-size: .9rem; }
+      .project h3 { margin: 0 0 4px; font-size: 1.25rem; letter-spacing: -.035em; }
+      .project p { margin: 0; color: var(--muted); font-size: .92rem; }
+      .project-tech { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+      .project-tech span { font-size: .72rem; font-weight: 700; border-bottom: 1px solid #b9c7bd; }
+      .arrow { color: var(--green); font-size: 1.5rem; transition: transform .2s; }
+      .project:hover .arrow { transform: translate(4px, -4px); }
+      .placeholder { font-size: .76rem; color: #a14620; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+
+      .journey { display: grid; grid-template-columns: .85fr 1.15fr; gap: 88px; }
+      .timeline { border-left: 1px solid var(--line); padding-left: 29px; display: grid; gap: 36px; }
+      .timeline-item { position: relative; }
+      .timeline-item::before { content: ''; position: absolute; width: 11px; height: 11px; left: -35px; top: 7px; background: var(--orange); border-radius: 50%; }
+      .timeline-item:first-child::before { background: var(--green); box-shadow: 0 0 0 5px #e1ede5; }
+      .timeline-item time { color: var(--green); font-size: .76rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+      .timeline-item h3 { margin: 7px 0 6px; font-size: 1.08rem; letter-spacing: -.02em; }
+      .timeline-item p { margin-bottom: 0; color: var(--muted); font-size: .92rem; }
+
+      .contact-box { background: var(--orange); color: var(--ink); padding: clamp(32px, 6vw, 74px); position: relative; overflow: hidden; }
+      .contact-box::after { content: '↗'; position: absolute; right: 6%; bottom: -14%; font-size: clamp(10rem, 27vw, 23rem); font-weight: 300; line-height: 1; color: rgba(255,255,255,.26); }
+      .contact-box > * { position: relative; z-index: 1; }
+      .contact-box h2 { max-width: 670px; margin-bottom: 22px; font-size: clamp(2.5rem, 5vw, 4.6rem); line-height: .96; letter-spacing: -.065em; }
+      .contact-box p { max-width: 500px; font-size: 1.07rem; }
+      .contact-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+      .contact-links a { border: 1px solid rgba(21,34,30,.5); padding: 12px 15px; font-size: .88rem; font-weight: 800; background: rgba(255,255,255,.18); }
+      .contact-links a:hover { background: #fff; }
+
+      footer { padding: 26px 0 40px; display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: .8rem; }
+
+      @media (max-width: 760px) {
+        .shell { width: min(100% - 32px, 1120px); }
+        .nav { min-height: 68px; }
+        .menu-button { display: block; }
+        .nav-links { display: none; position: absolute; top: 67px; left: 16px; right: 16px; z-index: 3; padding: 16px; background: #fff; box-shadow: var(--shadow); flex-direction: column; align-items: flex-start; gap: 14px; }
+        .nav-links.open { display: flex; }
+        .hero { grid-template-columns: 1fr; gap: 48px; padding: 62px 0 82px; }
+        .portrait-wrap { max-width: 310px; justify-self: center; }
+        .note { left: -17px; bottom: 16px; }
+        .about, .skills-grid, .journey { grid-template-columns: 1fr; gap: 35px; }
+        section { padding: 70px 0; }
+        .section-title { margin-bottom: 33px; }
+        .facts { grid-template-columns: 1fr; }
+        .project { grid-template-columns: 52px 1fr; gap: 13px; padding: 22px 18px; }
+        .arrow { display: none; }
+        footer { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="shell">
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="brand" href="#inicio">seu<span>nome</span>.dev</a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+        <div id="menu" class="nav-links">
+          <a href="#sobre">Sobre</a>
+          <a href="#habilidades">Habilidades</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#contato">Contato</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="inicio" class="shell hero">
+        <div>
+          <span class="eyebrow"><span class="status-dot"></span> Aberto a oportunidades de estágio</span>
+          <h1>Construo software com <em>curiosidade</em> e intenção.</h1>
+          <p class="hero-copy">Olá, eu sou <strong>Seu Nome</strong>, estudante de Engenharia de Software no 6º período. Estou em busca de uma oportunidade de estágio para aprender com um time de produto e transformar desafios reais em soluções úteis.</p>
+          <div class="button-row">
+            <a class="button button-primary" href="#projetos">Ver meus projetos <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="#contato">Vamos conversar <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <div class="portrait-wrap" aria-label="Ilustração para substituir por sua foto">
+          <div class="portrait">
+            <svg viewBox="0 0 320 370" role="img" aria-label="Ilustração de uma pessoa programando">
+              <circle cx="254" cy="61" r="24" fill="#D8EE79" />
+              <path d="M23 304c33-61 80-80 134-62 43 15 76 45 120 44v54H23z" fill="#0B493A"/>
+              <path d="M105 132c0-46 29-77 64-77 41 0 67 33 67 78 0 39-23 76-67 76-42 0-64-34-64-77z" fill="#E6A27C"/>
+              <path d="M101 130c-2-57 28-89 72-89 40 0 69 32 64 91-14-14-32-22-54-22-29 0-48 10-82 20z" fill="#18241F"/>
+              <path d="M122 203h96l28 105H94z" fill="#F3F4EE"/>
+              <path d="M125 204c16 17 54 22 82 0l10 105h-97z" fill="#E7F2E9"/>
+              <path d="M110 236c-34 18-57 48-68 94h82l19-80z" fill="#FB7D45"/>
+              <path d="M212 236c34 18 57 48 68 94h-82l-19-80z" fill="#FB7D45"/>
+              <rect x="70" y="289" width="182" height="87" rx="6" fill="#F6F6F2"/>
+              <rect x="80" y="299" width="162" height="62" rx="3" fill="#173A30"/>
+              <path d="M107 321l11 11-11 11M140 343h28" stroke="#D8EE79" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="note">Engenharia de Software <small>6º período · em evolução constante</small></div>
+        </div>
+      </section>
+
+      <div class="strip" aria-hidden="true"><div class="strip-inner"><span>estágio em tecnologia</span><b>✦</b><span>engenharia de software</span><b>✦</b><span>produto digital</span><b>✦</b><span>aprendizado contínuo</span><b>✦</b><span>estágio em tecnologia</span></div></div>
+
+      <section id="sobre" class="shell about">
+        <div>
+          <p class="section-label">Sobre mim</p>
+          <h2 class="section-title">Tecnologia é onde gosto de resolver problemas.</h2>
+        </div>
+        <div>
+          <p class="about-intro">Sou estudante de <strong>Engenharia de Software</strong>, interessado em desenvolvimento de aplicações, boas experiências para usuários e trabalho em equipe.</p>
+          <p class="about-detail">Procuro um estágio em que eu possa aplicar a base construída na graduação, receber boas trocas de profissionais mais experientes e contribuir com atenção aos detalhes. Gosto de aprender na prática, documentar o que descubro e melhorar um pouco a cada entrega.</p>
+          <div class="facts">
+            <div class="fact"><strong>6º</strong><span>período atual</span></div>
+            <div class="fact"><strong>2026</strong><span>em busca de estágio</span></div>
+            <div class="fact"><strong>BR</strong><span>informe sua cidade e modelo desejado</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="habilidades" class="shell">
+        <p class="section-label">Habilidades</p>
+        <h2 class="section-title">Ferramentas que venho usando para transformar ideias em software.</h2>
+        <div class="skills-grid">
+          <div class="skills-card">
+            <h3>Base técnica</h3>
+            <div class="tags">
+              <span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">HTML &amp; CSS</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Java</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Git &amp; GitHub</span><span class="tag">Figma</span>
+            </div>
+            <p style="margin:22px 0 0;color:var(--muted);font-size:.85rem">Edite esta lista para manter apenas as tecnologias que você já usa ou está aprendendo.</p>
+          </div>
+          <div class="skills-card focus-card">
+            <h3>Como posso contribuir</h3>
+            <p>Quero apoiar o time em entregas reais e evoluir a partir de feedbacks constantes.</p>
+            <ul class="focus-list">
+              <li><span class="check">✓</span> Desenvolvimento de interfaces responsivas</li>
+              <li><span class="check">✓</span> Organização e manutenção de código</li>
+              <li><span class="check">✓</span> Colaboração com Git e times ágeis</li>
+              <li><span class="check">✓</span> Aprendizado rápido e comunicação clara</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="projetos" class="projects">
+        <div class="shell">
+          <p class="section-label">Projetos</p>
+          <h2 class="section-title">Algumas coisas que criei enquanto aprendia.</h2>
+          <div class="project-list">
+            <a class="project" href="https://github.com/SEU-USUARIO" target="_blank" rel="noreferrer">
+              <span class="project-number">01</span>
+              <div>
+                <p class="placeholder">Substitua pelo seu projeto</p>
+                <h3>Nome do seu primeiro projeto</h3>
+                <p>Explique em uma frase qual problema ele resolve, para quem e qual foi sua principal contribuição.</p>
+                <div class="project-tech"><span>React</span><span>TypeScript</span><span>API</span></div>
+              </div>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project" href="https://github.com/SEU-USUARIO" target="_blank" rel="noreferrer">
+              <span class="project-number">02</span>
+              <div>
+                <p class="placeholder">Substitua pelo seu projeto</p>
+                <h3>Nome do seu segundo projeto</h3>
+                <p>Mostre um projeto de faculdade, voluntário ou pessoal e conte o impacto ou aprendizado técnico.</p>
+                <div class="project-tech"><span>Node.js</span><span>Banco de dados</span><span>Git</span></div>
+              </div>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="project" href="https://github.com/SEU-USUARIO" target="_blank" rel="noreferrer">
+              <span class="project-number">03</span>
+              <div>
+                <p class="placeholder">Substitua pelo seu projeto</p>
+                <h3>Nome do seu terceiro projeto</h3>
+                <p>Inclua um link para o repositório ou uma demonstração. Projetos simples também contam quando bem explicados.</p>
+                <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+              </div>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell journey">
+        <div>
+          <p class="section-label">Formação</p>
+          <h2 class="section-title">Uma trajetória em construção.</h2>
+          <p style="color:var(--muted);max-width:320px">Conte aqui seus estudos, cursos relevantes e experiências que ajudam a entender sua evolução.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <time>Atual · 6º período</time>
+            <h3>Engenharia de Software — [Nome da Faculdade]</h3>
+            <p>Previsão de conclusão: [mês/ano]. Destaque disciplinas, iniciação científica, monitoria ou atividades que façam sentido para a vaga.</p>
+          </article>
+          <article class="timeline-item">
+            <time>Seu curso/certificação</time>
+            <h3>[Nome do curso relevante]</h3>
+            <p>Adicione cursos que mostrem uma habilidade prática — por exemplo, desenvolvimento web, cloud, dados ou inglês.</p>
+          </article>
+          <article class="timeline-item">
+            <time>Seu próximo marco</time>
+            <h3>Primeira oportunidade de estágio</h3>
+            <p>Em busca de um time onde curiosidade, responsabilidade e vontade de aprender se transformem em impacto.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contato" class="shell" style="padding-top:0">
+        <div class="contact-box">
+          <p class="section-label" style="color:var(--ink)">Vamos conversar?</p>
+          <h2>Estou pronto para começar e aprender com seu time.</h2>
+          <p>Se você busca uma pessoa estagiária comprometida, curiosa e com vontade de construir bons produtos, ficarei feliz em me apresentar melhor.</p>
+          <div class="contact-links">
+            <a href="mailto:seuemail@exemplo.com">seuemail@exemplo.com ↗</a>
+            <a href="https://www.linkedin.com/in/SEU-USUARIO" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a href="https://github.com/SEU-USUARIO" target="_blank" rel="noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <span>© <span id="year"></span> Seu Nome. Feito com cuidado.</span>
+      <span>Engenharia de Software · 6º período</span>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const button = document.querySelector('.menu-button');
+      const menu = document.getElementById('menu');
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+      menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        menu.classList.remove('open');
+        button.setAttribute('aria-expanded', 'false');
+      }));
+    </script>
+  </body>
+</html>

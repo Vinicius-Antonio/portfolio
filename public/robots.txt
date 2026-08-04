@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vinicius-antonio.vercel.app/sitemap.xml

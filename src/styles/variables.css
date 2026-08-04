@@ -1,0 +1,66 @@
+:root {
+  /* Light Theme Colors */
+  --paper: #f6f6f2;
+  --ink: #15221e;
+  --muted: #5b6862;
+  --line: #d4dad5;
+  --green: #12634e;
+  --green-hover: #0d503e;
+  --green-light: #e7f2e9;
+  --lime: #d8ee79;
+  --orange: #fb7d45;
+  --card: #ffffff;
+  --card-border: #d4dad5;
+  --shadow: 0 18px 55px rgba(23, 40, 32, 0.08);
+  --shadow-hover: 0 24px 65px rgba(18, 99, 78, 0.15);
+
+  /* Nav Blur */
+  --nav-bg: rgba(246, 246, 242, 0.85);
+
+  /* Code / Tech Tag */
+  --tag-bg: #edf1ee;
+  --tag-color: #395048;
+
+  /* Project Section */
+  --projects-bg: #e8ece8;
+  --projects-grid: #cbd3cc;
+  --project-card: #f6f6f2;
+  --project-hover: #ffffff;
+
+  /* Strip marquee */
+  --strip-bg: #15221e;
+  --strip-text: #ffffff;
+
+  /* Transition speeds */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  --paper: #0e1614;
+  --ink: #f0f4f2;
+  --muted: #94a39b;
+  --line: #21332c;
+  --green: #25a46f;
+  --green-hover: #1e875b;
+  --green-light: #162c24;
+  --lime: #d8ee79;
+  --orange: #fb7d45;
+  --card: #15221e;
+  --card-border: #21332c;
+  --shadow: 0 18px 55px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 24px 65px rgba(37, 164, 111, 0.25);
+
+  --nav-bg: rgba(14, 22, 20, 0.88);
+
+  --tag-bg: #1d2e29;
+  --tag-color: #a4c4b5;
+
+  --projects-bg: #09100e;
+  --projects-grid: #1a2a24;
+  --project-card: #121e1a;
+  --project-hover: #172823;
+
+  --strip-bg: #070d0b;
+  --strip-text: #e0e8e4;
+}
