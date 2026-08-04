@@ -2,7 +2,7 @@
 
 Portfólio pessoal interativo desenvolvido com React 19 e Vite.
 
-🔗 **Acesse online:** [vinicius-antonio.vercel.app](https://vinicius-antonio.vercel.app)
+🔗 **Acesse online:** [viniciusantonio-portfolio.vercel.app](https://viniciusantonio-portfolio.vercel.app/)
 
 ## 🛠️ Tecnologias
 - **Frontend:** React 19, JavaScript (ES6+)
